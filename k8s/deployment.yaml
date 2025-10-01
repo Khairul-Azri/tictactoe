@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tic-tac-toe
+  labels:
+    app: tic-tac-toe
+spec:
+  replicas: 1  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: tic-tac-toe
+  template:
+    metadata:
+      labels:
+        app: tic-tac-toe
+    spec:
+      containers:
+      - name: tic-tac-toe
+        image: tictactoe.v1  # Replace with your Docker image name
+        ports:
+        - containerPort: 80  # Adjust if your app uses a different port

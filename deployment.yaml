@@ -1,0 +1,35 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tictactoe
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tictactoe-deployment
+  namespace: tictactoe
+  labels:
+    app: tictactoe
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: tictactoe
+  template:
+    metadata:
+      labels:
+        app: tictactoe
+    spec:
+      containers:
+      - name: tictactoe-container
+        image: skullpion91/tictactoe:latest
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
