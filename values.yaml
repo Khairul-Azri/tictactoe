@@ -9,7 +9,7 @@ service:
   port: 80
 
 # values.yaml
-annotations:
+podAnnotations:
   prometheus.io/scrape: "true"
   prometheus.io/port: "80"
   prometheus.io/path: "/metrics"
