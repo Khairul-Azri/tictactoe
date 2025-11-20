@@ -20,6 +20,13 @@ function checkWinner() {
 
 function handleClick(index) {
     if (!cells[index]) {
+        // Increment the metrics counter
+        fetch('/metrics/counter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ player: currentPlayer })
+        });
+
         cells[index] = currentPlayer;
         renderBoard();
         if (checkWinner()) return;
@@ -38,4 +45,5 @@ function renderBoard() {
     });
 }
 
+// Initial Board Render
 renderBoard();
